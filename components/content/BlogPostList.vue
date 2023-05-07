@@ -3,7 +3,7 @@
     <div v-if="show" class="grid gap-3 grid-cols-postList">
       <ContentList v-slot="{ list: postList }" path="/posts">
         <BlogPostListCard
-          v-for="post of sortedPostList(postList)"
+          v-for="post of sortedDescendingPostListByFilename(postList)"
           :title="post.title"
           :key="post.title"
           :post="post"
@@ -25,7 +25,7 @@ type listItem = {
 }
 const show = ref(false)
 // sort post list desc by filename
-function sortedPostList(list: any): listItem[] {
+function sortedDescendingPostListByFilename(list: any): listItem[] {
   return list.sort((a: any, b: any) => a._file < b._file)
 }
 onMounted(() => {
