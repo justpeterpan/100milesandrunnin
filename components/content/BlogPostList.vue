@@ -26,7 +26,7 @@ type listItem = {
 const show = ref(false)
 // sort post list desc by filename
 function sortedDescendingPostListByFilename(list: any): listItem[] {
-  return list.sort((a: any, b: any) => a._file < b._file)
+  return list.sort((a: any, b: any) => b._file.localeCompare(a._file))
 }
 onMounted(() => {
   show.value = !show.value
